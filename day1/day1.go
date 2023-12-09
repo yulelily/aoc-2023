@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"reflect"
 )
 
 func check(e error) {
@@ -15,7 +16,7 @@ func check(e error) {
 func main() {
 	// we are back to dealing with pointers !!!!! 🙃
 	// create a os.File pointer
-	f, err := os.Open("./input.txt")
+	f, err := os.Open("./example.txt")
 	check(err)
 
 	// create a file scanner using the bufio package and then split the input into lines
@@ -26,6 +27,8 @@ func main() {
 	// process each line one by one
 	for scanner.Scan() {
 		s := scanner.Text()
+
+		fmt.Println(reflect.TypeOf(s[0]))
 
 		// probably could combine these loops somehow...
 		l, r := 0, len(s) - 1
